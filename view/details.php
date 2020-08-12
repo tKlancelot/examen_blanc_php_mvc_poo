@@ -7,8 +7,8 @@ include('stylesheet.html');
 <div class="d-flex justify-content-center">
 
 
-    <div class="card m-5" style="width: 28rem;">
-        <img style="width: 28rem;height:19rem" class="card-img-top" src="assets/<?=$raviole->getPicture()?>" alt="<?= $raviole->getTitle()?>">
+    <div class="card m-5" style="width: 32rem;">
+        <img style="width: 32rem;height:21rem" class="card-img-top" src="assets/<?=$raviole->getPicture()?>" alt="<?= $raviole->getTitle()?>">
         <div class="card-header text-uppercase">
             détails de <?=$raviole->getTitle();?>
         </div>

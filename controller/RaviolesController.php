@@ -83,10 +83,9 @@ class RaviolesController
 //            var_dump($errors);
             require('view/updateForm.php');
         }
-    }
 
-    public function uploadImage()
-    {
 
     }
+
+
 }

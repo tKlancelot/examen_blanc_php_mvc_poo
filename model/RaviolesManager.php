@@ -80,8 +80,17 @@ class RaviolesManager extends Database
     public function orderBy()
     {
         $ravioles = [];
-        $sql = 'SELECT * FROM ravioles order by title';
+        $sql = 'SELECT * FROM ravioles ORDER BY title';
         foreach ($this->bdd->query($sql) as $row) {
+            $ravioles[] = new Ravioles($row['id'], $row['title'], $row['ingredient'], $row['description'], $row['picture']);
+        }
+        return $ravioles;
+    }
+
+    public function orderByDesc(){
+        $ravioles = [];
+        $sql = 'SELECT * FROM ravioles ORDER BY title DESC';
+        foreach ($this->bdd->query($sql) as $row){
             $ravioles[] = new Ravioles($row['id'], $row['title'], $row['ingredient'], $row['description'], $row['picture']);
         }
         return $ravioles;
@@ -108,14 +117,6 @@ class RaviolesManager extends Database
     }
 
 
-    public function orderByDesc(){
-        $ravioles = [];
-        $sql = 'SELECT * FROM ravioles ORDER BY title DESC';
-        foreach ($this->bdd->query($sql) as $row){
-            $ravioles[] = new Ravioles($row['id'], $row['title'], $row['ingredient'], $row['description'], $row['picture']);
-        }
-        return $ravioles;
-    }
 
     public function getColor($data){
         if ($data >= 0 && $data < 4){

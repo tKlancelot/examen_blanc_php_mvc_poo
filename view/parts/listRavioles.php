@@ -1,6 +1,6 @@
 <div class="bg-white scroller">
         <table class="table border rounded">
-            <thead class="text-uppercase text-light">
+            <thead class="text-uppercase sticky-top text-light">
             <tr>
                 <th>id</th>
                 <th class="text-left">

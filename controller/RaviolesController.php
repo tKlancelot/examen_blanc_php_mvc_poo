@@ -18,16 +18,16 @@ class RaviolesController
                 $imageUrl = uniqid().'.'.$extension;
                 move_uploaded_file($file['tmp_name'], 'assets/'.$imageUrl);
 
-            } else {
+            }
+            else {
                 $errors[] = 'Fichier trop lourd impossible';
             }
-        } else {
-            $errors[] = 'Impossible : j\'accepte que les jpg/jpeg !';
-//            var_dump($errors);
-//            die();
         }
+        else {
+            $errors[] = 'Impossible : j\'accepte que les jpg/jpeg !';
+        }
+//        die();
         return ['errors'=>$errors, 'picture'=>$imageUrl];
-
     }
 
     public function InsertOnSubmit()
@@ -37,8 +37,11 @@ class RaviolesController
 //        var_dump($_POST);
         if(isset($_FILES['picture'])) {
             $upload = $this->uploadImage($_FILES['picture']);
-            if (count($upload['errors']) === 0) {
+            if (count($upload['errors']) === 0){
                 $raviole->setPicture($upload['picture']);
+            }
+            else{
+                $errors[] = $upload['errors'][0];
             }
         }
         if (empty($_POST['ingredient'])) {
@@ -88,10 +91,13 @@ class RaviolesController
         $raviole = $ravioleManager->select($id);
         $raviole = new Ravioles($id,$_POST['title'], $_POST['ingredient'], $_POST['description'], $_FILES['picture']);
 
-        if(isset($_FILES['picture'])){
+        if(isset($_FILES['picture'])) {
             $upload = $this->uploadImage($_FILES['picture']);
-            if (count($upload['errors']) === 0) {
+            if (count($upload['errors']) === 0){
                 $raviole->setPicture($upload['picture']);
+            }
+            else{
+                $errors[] = $upload['errors'][0];
             }
         }
         if (empty($_POST['ingredient'])) {

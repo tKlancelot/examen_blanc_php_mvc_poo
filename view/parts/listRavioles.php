@@ -3,7 +3,7 @@
             <thead class="text-uppercase text-light">
             <tr>
                 <th>id</th>
-                <th>
+                <th class="text-left">
                     <span>titre&emsp;</span>
                     &emsp;<a class='tri' href="../../../exam_blanc_php_poo_mvc_tarik/index.php?controller=default&action=orderBy"><i class="fas fa-caret-down"></i></a>
                     &emsp;<a class='tri' href="../../../exam_blanc_php_poo_mvc_tarik/index.php?controller=default&action=orderByDesc"><i class="fas fa-caret-up"></i></a>
@@ -20,7 +20,7 @@
             <tbody>
         <tr><?php foreach ($ravioles as $raviole){?>
             <td><?=$raviole->getId();?></td>
-            <td><?=$raviole->getTitle();?></td>
+            <td class="text-left"><?=$raviole->getTitle();?></td>
             <td><?=$raviole->getIngredient();?></td>
             <td width="10%"><img width=50% height=40px src="assets/<?=$raviole->getPicture();?>"</td>
             <td class=""><a href="../../../exam_blanc_php_poo_mvc_tarik/index.php?controller=raviole&action=delete&id=<?php echo $raviole->getId()?>"><i class="fas fa-trash"></i></a></td>

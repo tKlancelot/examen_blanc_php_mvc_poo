@@ -12,7 +12,7 @@
     </a>
 
     <a class='pl-2' href="#">
-        <button style="border-radius:50%;width:50px;height:50px;font-size:1.4rem;color:white;padding-top:0.6rem;background-color:<?=$color?>" type='submit' class="btn mt-2 mb-2 text-uppercase">
+        <button style="border-radius:50%;width:50px;height:50px;font-size:1.4rem;color:white;padding-top:0.6rem;background-color:<?php echo $color?>" type='submit' class="btn mt-2 mb-2 text-uppercase">
             <?php
             echo $data;
             ?>

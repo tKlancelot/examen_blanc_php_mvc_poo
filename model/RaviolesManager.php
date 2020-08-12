@@ -116,20 +116,21 @@ class RaviolesManager extends Database
         return $ravioles;
     }
 
-
-
     public function getColor($data){
         if ($data >= 0 && $data < 4){
             $color = 'orange';
         }
-        else if ($data >= 4){
+        else if ($data >= 4 && $data < 8){
             $color = 'red';
         }
-        else if ($data >= 8){
+        else if ($data >= 8 && $data < 12){
             $color = 'purple';
         }
-        else if ($data >= 12){
+        else if ($data >= 12 && $data < 16){
             $color = 'blue';
+        }
+        else if ($data >= 16){
+            $color = 'limegreen';
         }
         return $color;
     }

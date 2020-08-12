@@ -116,3 +116,4 @@ de dupliquer notre code et d'afficher très précisément ce qu'on souhaite.
 15 - Le controller permet en quelques sorte de faire une liaison entre la vue
 et le model. On va pouvoir rechercher des données dans le model et les afficher
 dans les vues. Dans le dossier controller, on fait le traitement de ces échanges.
+

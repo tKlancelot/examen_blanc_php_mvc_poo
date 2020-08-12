@@ -8,7 +8,7 @@ include('stylesheet.html');
 
 
     <div class="card m-5" style="width: 28rem;">
-        <img class="card-img-top" src="assets/<?=$raviole->getPicture()?>" alt="<?= $raviole->getTitle()?>">
+        <img style="width: 28rem;height:19rem" class="card-img-top" src="assets/<?=$raviole->getPicture()?>" alt="<?= $raviole->getTitle()?>">
         <div class="card-header text-uppercase">
             détails de <?=$raviole->getTitle();?>
         </div>

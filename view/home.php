@@ -20,7 +20,7 @@ include('parts/header.php');
             include('parts/menu.php');
         ?>
 <!--        <div class="d-flex justify-content-around bg-light border rounded">-->
-        <h4 class="text-uppercase border border-secondary border-left-0 border-top-0 border-right-0 bg-light"><i class="ustenleft fas fa-utensils"></i>&emsp;mes recettes de ravioles&emsp;<i class="usten fas fa-utensils"></i></h4>
+        <h4 class="text-uppercase border border-secondary border-left-0 border-top-0 border-right-0 bg-light">mes recettes de ravioles</h4>
             <?php
                 include('parts/listRavioles.php');
              ?>

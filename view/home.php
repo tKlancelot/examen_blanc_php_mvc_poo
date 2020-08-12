@@ -15,7 +15,7 @@ include ('stylesheet.html');
 include('parts/header.php');
 ?>
 <div id='test' class="d-flex justify-content-center">
-    <div class="cadre col-9 bg-light p-2">
+    <div class="cadre col-9 bg-light p-2 mt-1">
         <?php
             include('parts/menu.php');
         ?>

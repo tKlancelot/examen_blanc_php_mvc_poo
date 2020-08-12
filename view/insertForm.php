@@ -26,7 +26,7 @@ include ('stylesheet.html');
             <button type='submit' class="btn btn-secondary mt-2 mb-2">retour</button>
         </a>
         <h4 class="text-uppercase border rounded">ajouter une recette</h4>
-        <form class="form" method="post" action="index.php?controller=raviole&action=addRaviole">
+        <form class="form" method="post" action="index.php?controller=raviole&action=addRaviole" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title"><i class="fas fa-pen-alt"></i>&emsp;titre</label>
                 <input class='form-control' type="text" name="title" id="title" placeholder="titre de la recette"/>

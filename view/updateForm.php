@@ -19,7 +19,7 @@ include ('stylesheet.html');
         </a>
         <h4 class="text-uppercase border rounded">modifier la recette de <?php echo $raviole->getTitle();?></h4>
 
-        <form method="post" action="index.php?controller=raviole&action=updateRaviole&id=<?php echo $raviole->getId()?>">
+        <form method="post" action="index.php?controller=raviole&action=updateRaviole&id=<?php echo $raviole->getId()?>" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title"><i class="fas fa-pen-alt"></i>&emsp;titre de la recette</label>
                 <input name="title" id="title" value="<?php echo $raviole->getTitle()?>" class="form-control">

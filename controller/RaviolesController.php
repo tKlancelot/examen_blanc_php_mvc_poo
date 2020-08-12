@@ -8,22 +8,47 @@ class RaviolesController
         require('view/insertForm.php');
     }
 
+    private function uploadImage($file){
+        $imageUrl= '';
+        $errors = [];
+
+        if($file['type'] === 'image/jpeg'){
+            if($file['size']<800000){
+                $extension = explode('/', $file['type'])[1];
+                $imageUrl = uniqid().'.'.$extension;
+                move_uploaded_file($file['tmp_name'], 'assets/'.$imageUrl);
+
+            } else {
+                $errors[] = 'Fichier trop lourd impossible';
+            }
+        } else {
+            $errors[] = 'Impossible : j\'accepte que les jpg/jpeg !';
+//            var_dump($errors);
+//            die();
+        }
+        return ['errors'=>$errors, 'picture'=>$imageUrl];
+
+    }
+
     public function InsertOnSubmit()
     {
         $errors = [];
-        $raviole = new Ravioles(null, $_POST['title'], $_POST['ingredient'], $_POST['description'], $_POST['picture']);
+        $raviole = new Ravioles(null, $_POST['title'], $_POST['ingredient'], $_POST['description'], $_FILES['picture']);
 //        var_dump($_POST);
-        if (empty($_POST['title'])) {
-            $errors[] = 'erreur : le champ title est requis ! ';
+        if(isset($_FILES['picture'])) {
+            $upload = $this->uploadImage($_FILES['picture']);
+            if (count($upload['errors']) === 0) {
+                $raviole->setPicture($upload['picture']);
+            }
         }
-//        if (!ctype_alpha($_POST['title'])) {
-//            $errors[] = 'erreur : le champ title ne doit contenir que des lettres';
-//        }
         if (empty($_POST['ingredient'])) {
             $errors[] = 'erreur : le champ ingredient est requis ! ';
         }
-        if(!ctype_alpha($_POST['ingredient'])){
+        if (!ctype_alpha($_POST['ingredient'])) {
             $errors[] = 'erreur : le champ ingredient ne doit contenir que des lettres';
+        }
+        if (empty($_POST['title'])) {
+            $errors[] = 'erreur : le champ title est requis ! ';
         }
         if (count($errors) === 0) {
             $raviolesManager = new RaviolesManager();
@@ -61,20 +86,23 @@ class RaviolesController
         $errors = [];
         $ravioleManager = new RaviolesManager();
         $raviole = $ravioleManager->select($id);
-        $raviole = new Ravioles($id,$_POST['title'], $_POST['ingredient'], $_POST['description'], $_POST['picture']);
+        $raviole = new Ravioles($id,$_POST['title'], $_POST['ingredient'], $_POST['description'], $_FILES['picture']);
 
-        if(empty($_POST['title'])){
-            $errors[] = 'erreur : le champ title est requis ! ';
+        if(isset($_FILES['picture'])){
+            $upload = $this->uploadImage($_FILES['picture']);
+            if (count($upload['errors']) === 0) {
+                $raviole->setPicture($upload['picture']);
+            }
         }
-//        if(!ctype_alpha($_POST['title'])){
-//            $errors[] = 'erreur : le champ title ne doit contenir que des lettres';
-//        }
-        if(empty($_POST['ingredient'])){
+        if (empty($_POST['ingredient'])) {
             $errors[] = 'erreur : le champ ingredient est requis ! ';
         }
-//        if(!ctype_alpha($_POST['mail'])){
-//            $errors[] = 'erreur : le champ mail ne doit contenir que des lettres';
-//        }
+        if (!ctype_alpha($_POST['ingredient'])) {
+            $errors[] = 'erreur : le champ ingredient ne doit contenir que des lettres';
+        }
+        if (empty($_POST['title'])) {
+            $errors[] = 'erreur : le champ title est requis ! ';
+        }
         if (count($errors) === 0) {
             $ravioleManager->update($raviole);
             header('Location: /exam_blanc_php_poo_mvc_tarik/index.php?controller=default&action=home');
@@ -84,8 +112,6 @@ class RaviolesController
             require('view/updateForm.php');
         }
 
-
     }
-
 
 }

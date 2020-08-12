@@ -1,0 +1,118 @@
+1 - Encapsuler des données c'est le fait de regrouper des données dans une classe. En fonction d'une visibilité
+(qu'on aura défini au préalable) on pourra lire ou manipuler ces données à l'extérieur de cette classe.
+
+exemple
+
+<?php
+
+class Humain{
+    private $nom = 'louatah';
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+}
+
+$tarik  = new Humain();
+echo $tarik->getNom();
+
+?>
+
+2 - les attributs peuvent être de type private, public ou protected
+
+3 - un objet de type exception peut prendre deux arguments en paramètres
+$execption = new Exception('message d'erreur','code d'erreur de type number');
+la classe Exception est une classe native à PHP. On peut donc appeler les méthodes
+de cette classe :
+
+$exception->getFile();
+$exception->getLine();
+$exception->getMessage();
+$exception->getCode();
+
+
+4 - une interface définit les fonctions obligatoires pour une classe
+Si une classe implémente une interface
+alors les fonctions crées dans l'interface seront necessaires dans
+dans cette classe. Dans le cas contraire, php nous renvoit une erreur.
+On peut implementer plusieurs interfaces sur une classe
+
+5 -
+
+on définit une interface avec le mot-clef interface
+<?php
+interface Respirer
+{
+  public function respirer(Humain $humain);
+}
+
+class Humain implements Respirer
+{
+}
+?>
+
+6 - une classe abstraite est une classe qu'on ne peut pas instancier
+On en besoin pour centraliser le code source dans la création de nos
+futures pages, on peut les appeler , mais pas les instancier.
+
+7 -
+<?php
+abstract class Manger{
+  abstract manger(); //Une méthode abstraite
+}
+?>
+8 - Une méthode magique est toujours précédée de deux underscores.
+9 - Parmi elles, on peut citer :
+
+la méthode magique __set :
+public function __set($name){}
+
+
+la méthode magique __get :
+public function __get($name){}
+
+la méthode magique __isset : //renvoit un boolean
+public function __isset($name){}
+
+la méthode magique __unset :
+public function __unset($name){}
+
+10 -
+__set est invoquée lorsqu'on cherche à définir un attribut privé ou inexistant
+
+__get : est invoqué lorqu'on cherche à accéder à un attribut inexistant ou privé, prend en paramètre
+ le nom de l'attribut privé
+
+ __isset : on essaye d'appeler la fonction php isset() sur un attribut privé ou inexistant ;
+
+ __unset : on essaye d'appeler la fonction php unset() sur un attribut privé ou inexistant ;
+
+11 -
+
+la fonction __serialize() permet de transformer un objet en chaîne de caractère;
+son paramètre est l'objet qu'on souhaite serializer
+
+la fonction __unserialize() retransforme la chaîne de caractère en objet
+
+12 - L'intérêt majeur de programmer en MVC est de pouvoir structurer clairement
+un projet de par l'architecture proposée.
+Le code sera doté d'une meilleure maintenabilité et lisibilité.
+
+13 - Dans le modèle, on va pouvoir gérer notre base de données, en créant des classes
+et des objets dont les attributs vont répésenter nos tables et nos champs.(bdd)
+On aura aussi un ou plusieurs manager : on y écrira des fonctions contenant des
+requêtes sql. de manière à pouvoir intéragir avec notre base de données.
+
+14 - Dans le dossier vue, on va gérer l'affichage, la partie front.
+Les vues contiennent les pages html. On peut aussi créer un sous-dossier part
+qui nous permettra d'éviter grâce à la fonction include() ou require d'éviter
+de dupliquer notre code et d'afficher très précisément ce qu'on souhaite.
+
+15 - Le controller permet en quelques sorte de faire une liaison entre la vue
+et le model. On va pouvoir rechercher des données dans le model et les afficher
+dans les vues. Dans le dossier controller, on fait le traitement de ces échanges.
